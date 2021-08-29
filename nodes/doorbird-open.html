@@ -1,0 +1,32 @@
+<script type="text/javascript">
+    RED.nodes.registerType('doorbird-open', {
+        category: 'Doorbird',
+        color: '#dedede',
+        defaults: {
+            name: {value:""},
+            station: {value:"", type:"doorbird-config"},
+            relay: {value:"1", required: true}
+        },
+        icon: 'doorbird.png',
+        inputs: 1,
+        outputs: 1,
+        label: function() {
+            return this.name || "doorbird open";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="doorbird-open">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-station"><i class="fa fa-tag"></i> Station</label>
+        <input type="text" id="node-input-station" placeholder="Station">
+    </div>
+    <div class="form-row">
+        <label for="node-input-relay"><i class="fa fa-tag"></i> Relay</label>
+        <input type="text" id="node-input-relay" placeholder="Relay">
+    </div>
+</script>

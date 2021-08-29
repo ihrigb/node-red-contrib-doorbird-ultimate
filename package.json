@@ -1,0 +1,33 @@
+{
+  "name": "node-red-contrib-doorbird-ultimate",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ihrigb/node-red-contrib-doorbird-ultimate.git"
+  },
+  "keywords": [
+    "node-red",
+    "smart",
+    "home",
+    "doorbird"
+  ],
+  "author": "ihrigb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ihrigb/node-red-contrib-doorbird-ultimate/issues"
+  },
+  "homepage": "https://github.com/ihrigb/node-red-contrib-doorbird-ultimate#readme",
+  "node-red": {
+    "nodes": {
+      "doorbird-config": "nodes/doorbird-config.js",
+      "doorbird-info": "nodes/doorbird-info.js",
+      "doorbird-open": "nodes/doorbird-open.js",
+      "doorbird-ui-image": "nodes/doorbird-ui-image.js",
+      "doorbird-ui-video": "nodes/doorbird-ui-video.js"
+    }
+  },
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}
