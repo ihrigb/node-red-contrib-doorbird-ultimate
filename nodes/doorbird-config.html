@@ -6,8 +6,8 @@
             host: {required: true}
         },
         credentials: {
-            username: {required: true},
-            password: {required: true}
+            username: {type: "text"},
+            password: {type: "password"}
         },
         label: function() {
             return this.name || this.host;
