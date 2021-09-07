@@ -3,6 +3,7 @@ module.exports = function(RED) {
         RED.nodes.createNode(this, n);
         var node = this;
         node.host = n.host;
+        node.scheme = n.scheme;
 
         // TODO function to retain base uri
         // for compatibility with other nodes

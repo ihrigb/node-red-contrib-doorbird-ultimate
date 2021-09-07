@@ -16,7 +16,7 @@ module.exports = function(RED) {
         node.on('input', function(msg) {
 
             var req = {
-                url: 'http://' + node.station.host + '/bha-api/info.cgi',
+                url: `${node.station.scheme}://${node.station.host}/bha-api/info.cgi`,
                 method: 'GET',
                 headers: {
                     Authorization: authHeader(node.station.username, node.station.password)

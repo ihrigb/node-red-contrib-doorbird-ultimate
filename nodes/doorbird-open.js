@@ -12,6 +12,7 @@ module.exports = function(RED) {
         var node = this;
 
         node.station = RED.nodes.getNode(config.station);
+        node.relay = config.relay;
 
         node.on('input', function(msg) {
 
@@ -33,6 +34,8 @@ module.exports = function(RED) {
                     return;
                 }
                 var jsun;
+                console.log(result);
+                console.log(data);
                 try {
                     jsun = JSON.parse(data);
                 } catch (e) {

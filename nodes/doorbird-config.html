@@ -3,7 +3,8 @@
         category: 'config',
         defaults: {
             name: {value: ''},
-            host: {required: true}
+            host: {required: true},
+            scheme: {value: 'http', required: true}
         },
         credentials: {
             username: {type: "text"},
@@ -19,6 +20,13 @@
     <div class="form-row">
         <label for="node-config-input-name"><i class="fa fa-bookmark"></i> Name</label>
         <input type="text" id="node-config-input-name">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-scheme"><i class="fa fa-bookmark"></i> Scheme</label>
+        <select id="node-config-input-scheme">
+            <option value="http">http</option>
+            <option value="https">https</option>
+        </select>
     </div>
     <div class="form-row">
         <label for="node-config-input-host"><i class="fa fa-bookmark"></i> Host</label>
