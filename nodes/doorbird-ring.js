@@ -1,7 +1,7 @@
 module.exports = function(RED) {
     "use strict";
 
-    var argon2 = require('argon2');
+    var _sodium = require('libsodium-wrappers');
     var chacha = require('chacha-js');
 
     function DoorbirdRingNode(config) {
@@ -9,6 +9,9 @@ module.exports = function(RED) {
         var node = this;
 
         node.station = RED.nodes.getNode(config.station);
+
+        var username = node.station.username;
+        var password = node.station.password;
 
         node.station.registerListener(config.port, (msg, remote) => {
             if (msg.length !== 70) {
@@ -18,27 +21,44 @@ module.exports = function(RED) {
                 return;
             }
 
-            let salt = msg.slice(12, 28);
-            let options = {
-                memoryCost: 8192,
-                timeCost: 4,
-                raw: true,
-                salt: salt
-            };
+            var version = msg.slice(3, 4);
+            var opslimit = msg.slice(4, 8).readInt32BE();
+            var memlimit = msg.slice(8, 12).readInt32BE();
+            var salt = msg.slice(12, 28);
+            var nonce = msg.slice(28, 36);
+            var ciphertext = msg.slice(36, 70);
 
-            console.log("before hash");
+            var keylength = 32;
 
-            console.log(node.station.password.substring(0, 5));
+            async function strech() {
+                await _sodium.ready;
+                const sodium = _sodium;
+                const streched = Buffer.from(sodium.crypto_pwhash(keylength, password.substring(0, 5), salt, opslimit, memlimit, sodium.crypto_pwhash_ALG_ARGON2I13));
+                return streched;
+            }
 
-            argon2.hash(node.station.password.substring(0, 5), options).then(hash => {
+            strech().then(streched => {
                 try {
-                    let nonce = msg.slice(28, 36);
-                    let crypt = msg.slice(36, 70);
+                    var decipher = chacha.AeadLegacy(streched, nonce, true);
+                    var result = decipher.update(ciphertext);
 
-                    let decipher = chacha.AeadLegacy(hash, nonce, true);
-                    let result = decipher.update(crypt);
+                    var intercomId = result.slice(0, 6);
+                    var event = result.slice(6, 14);
+                    var timestamp = result.slice(14, 18);
+                    var d = new Date(0);
+                    d.setUTCSeconds(timestamp.readInt32BE());
 
-                    console.log(result.toString("hex"));
+                    if (username.substring(0, 5) !== intercomId.toString('utf-8')) {
+                        return;
+                    }
+
+                    node.send({
+                        payload: {
+                            station: intercomId.toString('utf-8'),
+                            event: event.toString('utf-8'),
+                            timestamp: d
+                        }
+                    });
                 } catch(e) {
                     console.log(e);
                 }

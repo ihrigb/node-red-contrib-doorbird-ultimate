@@ -22,9 +22,13 @@ module.exports = function(RED) {
         server.on('message', function(msg, remote) {
             if (host === remote.address) {
                 serverObj.listeners.forEach(listener => {
-                    var copyBuffer = Buffer.alloc(msg.length);
-                    msg.copy(copyBuffer);
-                    listener(copyBuffer, remote);
+                    try {
+                        var copyBuffer = Buffer.alloc(msg.length);
+                        msg.copy(copyBuffer);
+                        listener(copyBuffer, remote);
+                    } catch (e) {
+                        console.log("Error: ", e);
+                    }
                 });
             }
         });
