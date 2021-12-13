@@ -18,6 +18,9 @@
     "url": "https://github.com/ihrigb/node-red-contrib-doorbird-ultimate/issues"
   },
   "homepage": "https://github.com/ihrigb/node-red-contrib-doorbird-ultimate#readme",
+  "scripts": {
+    "test": "exit 0"
+  },
   "node-red": {
     "nodes": {
       "doorbird-config": "nodes/doorbird-config.js",
