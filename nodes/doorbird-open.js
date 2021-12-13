@@ -34,13 +34,13 @@ module.exports = function(RED) {
                     return;
                 }
                 var jsun;
-                console.log(result);
-                console.log(data);
                 try {
                     jsun = JSON.parse(data);
                 } catch (e) {
-                    node.error('Doorbird Station returned invalid JSON.', result, data);
-                    return;
+                    node.error('Doorbird Station returned invalid JSON.', e);
+                    node.send({
+                        payload: data
+                    });
                 }
                 node.send({
                     payload: jsun
