@@ -39,7 +39,7 @@ module.exports = function(RED) {
                 try {
                     jsun = JSON.parse(data);
                 } catch (e) {
-                    node.error('Doorbird Station returned invalid JSON.', msg);
+                    node.error('Doorbird Station returned invalid JSON.', result, data);
                     return;
                 }
                 node.send({
