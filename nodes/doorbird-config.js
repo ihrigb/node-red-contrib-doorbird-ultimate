@@ -1,64 +1,31 @@
 module.exports = function(RED) {
 
-    var dgram = require('dgram');
-
-    var servers = {};
-
-    function startServer(port, host) {
-        if (servers.hasOwnProperty(port)) {
-            return;
-        }
-
-        var server = dgram.createSocket({type: 'udp4', reuseAddr: true});
-        server.bind(port);
-
-        var serverObj = {
-            server: server,
-            listeners: []
-        };
-
-        servers[port] = serverObj;
-
-        server.on('message', function(msg, remote) {
-            if (host === remote.address) {
-                serverObj.listeners.forEach(listener => {
-                    try {
-                        var copyBuffer = Buffer.alloc(msg.length);
-                        msg.copy(copyBuffer);
-                        listener(copyBuffer, remote);
-                    } catch (e) {
-                        console.log("Error: ", e);
-                    }
-                });
-            }
-        });
-
-        server.on('listening', function() {
-            // TODO logging
-        });
-    }
+    var doorbird = require('doorbird');
 
     function DoorbirdConfigNode(n) {
         RED.nodes.createNode(this, n);
         var node = this;
-        node.host = n.host;
-        node.scheme = n.scheme;
 
-        // TODO function to retain base uri
-        // for compatibility with other nodes
-        node.username = node.credentials.username;
-        node.password = node.credentials.password;
+        var host = n.host;
+        var scheme = n.scheme;
+        var username = node.credentials.username;
+        var password = node.credentials.password;
 
-        node.startServer = startServer;
-        node.registerListener = (port, listener) => {
-            console.log(`New listener on port ${port}`)
-            startServer(port, node.host);
-            servers[port].listeners.push(listener);
+        node.doorbird = new doorbird.default({
+            scheme: scheme,
+            host: host,
+            username: username,
+            password: password
+        });
+        node.doorbirdServer = node.doorbird.startUdpSocket(6524);
+
+        node.registerListener = (listener) => {
+            node.doorbirdServer.registerRingListener(listener);
         };
 
-        node.on("clone", function() {
-            if (server !== undefined) {
-                server.close();
+        node.on("close", function() {
+            if (node.doorbirdServer !== undefined) {
+                node.doorbirdServer.close();
             }
         });
     }

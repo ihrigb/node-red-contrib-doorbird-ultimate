@@ -32,8 +32,6 @@
     }
   },
   "dependencies": {
-    "chacha-js": "^2.1.1",
-    "libsodium-wrappers": "^0.7.9",
-    "request": "^2.88.2"
+    "doorbird": "^0.0.5"
   }
 }

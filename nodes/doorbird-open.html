@@ -12,19 +12,6 @@
         outputs: 1,
         label: function() {
             return this.name || "doorbird open";
-        },
-        oneditprepare: function() {
-            var node = this;
-            var station = RED.nodes.node($("#node-input-station")).val();
-
-            console.log("PREPARE");
-            function getRelays() {
-
-            }
-
-            $("#node-input-station").change(function() {
-                station = RED.nodes.node($(this).val());
-            })
         }
     });
 </script>

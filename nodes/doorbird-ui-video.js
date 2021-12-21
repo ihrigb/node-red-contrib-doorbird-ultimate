@@ -23,13 +23,11 @@ module.exports = function (RED) {
 
         node.station = RED.nodes.getNode(config.station);
 
-        var url = () => 'http://' + node.station.host + '/bha-api/video.cgi'
-            + '?http-user=' + node.station.username
-            + '&http-password=' + node.station.password;
+        var url = node.station.doorbird.getVideoUrl();
 
         var done = ui.addWidget({
             node: node,
-            format: html.replace(new RegExp('%SOURCE%', 'g'), url()),
+            format: html.replace(new RegExp('%SOURCE%', 'g'), url),
             templateScope: 'local',
             width: config.width || RED.nodes.getNode(config.group).config.width,
             height: config.height || RED.nodes.getNode(config.group).config.width,
