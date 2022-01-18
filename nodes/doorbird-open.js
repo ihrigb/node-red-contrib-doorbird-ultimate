@@ -11,7 +11,7 @@ module.exports = function(RED) {
         node.on('input', function(msg) {
 
             var doorbird = node.station.doorbird;
-            doorbird.openDoor(relay, (response) => {
+            doorbird.openDoor(node.relay, (response) => {
                 node.send({
                     payload: response
                 });
