@@ -32,6 +32,6 @@
     }
   },
   "dependencies": {
-    "doorbird": "^0.0.7"
+    "doorbird": "^0.0.9"
   }
 }
