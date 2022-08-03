@@ -14,7 +14,15 @@
         },
         inputLabels: 'Trigger',
         outputLabels: 'Info',
-        icon: 'doorbird.png'
+        icon: 'doorbird.png',
+        button: {
+            onclick: function() {
+                $.ajax({
+                    url: `DoorbirdUltimate/${this.id}/info`,
+                    type: "POST"
+                })
+            }
+        }
     });
 </script>
 
