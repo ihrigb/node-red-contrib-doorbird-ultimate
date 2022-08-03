@@ -1,6 +1,4 @@
 <script type="text/javascript">
-    //ui = RED.require("node-red-dashboard")(RED);
-    //console.log(ui.state);
     RED.nodes.registerType('ui_doorbird-ui-video', {
         category: 'Dashboard',
         color: '#dedede',
@@ -23,11 +21,11 @@
             station: {value:"", type:"doorbird-config"}
         },
         icon: 'doorbird.png',
-        paletteLabel: 'doorbird video',
+        paletteLabel: 'Video',
         inputs: 0,
         outputs: 0,
         label: function() {
-            return this.name || "doorbird video";
+            return this.name || "Video";
         },
         oneditprepare: () => {
             $( '#node-input-size' ).elementSizer( {
@@ -59,4 +57,8 @@
         <label for="node-input-station"><i class="fa fa-tag"></i> Station</label>
         <input type="text" id="node-input-station" placeholder="Station">
     </div>
+</script>
+
+<script type="text/html" data-help-name="ui_doorbird-ui-video">
+    <p>UI node to show live video of the Doorbird camera in the dashboard.</p>
 </script>

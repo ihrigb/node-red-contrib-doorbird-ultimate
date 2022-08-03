@@ -1,0 +1,118 @@
+[
+    {
+        "id": "73654e6e632fdaa3",
+        "type": "tab",
+        "label": "Doorbird Open Door",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "44249193de5cead5",
+        "type": "ui_button",
+        "z": "73654e6e632fdaa3",
+        "name": "",
+        "group": "fa89bbfdf1dd56f1",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Open Door",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "fa-bell",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 110,
+        "y": 60,
+        "wires": [
+            [
+                "b8c21e0d7b883061"
+            ]
+        ]
+    },
+    {
+        "id": "b8c21e0d7b883061",
+        "type": "doorbird-open",
+        "z": "73654e6e632fdaa3",
+        "name": "",
+        "station": "703bc69b1e4d4e22",
+        "relay": "[controller]@1",
+        "x": 270,
+        "y": 60,
+        "wires": [
+            [
+                "99914e91bc7665e2"
+            ]
+        ]
+    },
+    {
+        "id": "92c9d754c040cde6",
+        "type": "ui_toast",
+        "z": "73654e6e632fdaa3",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "Notification",
+        "x": 590,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "99914e91bc7665e2",
+        "type": "function",
+        "z": "73654e6e632fdaa3",
+        "name": "Message",
+        "func": "return {\n    payload: \"Door opened.\"\n};\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 60,
+        "wires": [
+            [
+                "92c9d754c040cde6"
+            ]
+        ]
+    },
+    {
+        "id": "fa89bbfdf1dd56f1",
+        "type": "ui_group",
+        "name": "Standard",
+        "tab": "0eccbad7083c0c4c",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "703bc69b1e4d4e22",
+        "type": "doorbird-config",
+        "name": "Doorbird",
+        "host": "[Doorbird IP]",
+        "scheme": "http",
+        "port": "6524"
+    },
+    {
+        "id": "0eccbad7083c0c4c",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

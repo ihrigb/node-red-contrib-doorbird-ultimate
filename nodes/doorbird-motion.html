@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    RED.nodes.registerType('doorbird-ring', {
+    RED.nodes.registerType('doorbird-motion', {
         category: 'Doorbird',
         defaults: {
             name: {value:""},
@@ -8,16 +8,16 @@
         inputs: 0,
         outputs: 1,
         color: '#dedede',
-        paletteLabel: 'Ring',
+        paletteLabel: 'Motion',
         label: function() {
-            return this.name || "Ring";
+            return this.name || "Motion";
         },
-        outputLabels: 'Ring Event',
+        outputLabels: 'Motion Event',
         icon: 'doorbird.png',
     });
 </script>
 
-<script type="text/html" data-template-name="doorbird-ring">
+<script type="text/html" data-template-name="doorbird-motion">
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
@@ -28,12 +28,12 @@
     </div>
 </script>
 
-<script type="text/html" data-help-name="doorbird-ring">
-    <p>Input node for Doorbird ring events.</p>
+<script type="text/html" data-help-name="doorbird-motion">
+    <p>Input node for Doorbird motion events.</p>
 
     <h3>Output</h3>
     <dl class="message-properties">
         <dt>payload <span class="property-type">object</span></dt>
-        <dd>Ring event payload.</dd>
+        <dd>Motion event payload.</dd>
     </dl>
 </script>

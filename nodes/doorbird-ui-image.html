@@ -23,11 +23,13 @@
             station: {value:"", type:"doorbird-config"}
         },
         icon: 'doorbird.png',
-        paletteLabel: 'doorbird image',
+        paletteLabel: 'Image',
+        inputLabels: 'Update Trigger',
+        outputLabels: 'Forwarded Input Message',
         inputs: 1,
         outputs: 1,
         label: function() {
-            return this.name || "doorbird image";
+            return this.name || "Image";
         },
         oneditprepare: () => {
             $( '#node-input-size' ).elementSizer( {
@@ -59,4 +61,17 @@
         <label for="node-input-station"><i class="fa fa-tag"></i> Station</label>
         <input type="text" id="node-input-station" placeholder="Station">
     </div>
+</script>
+
+<script type="text/html" data-help-name="ui_doorbird-ui-image">
+    <p>UI node to show the latest image of the Doorbird camera in the dashboard.</p>
+
+    <h3>Input</h3>
+    <p>Any input will trigger an update of the image.</p>
+
+    <h3>Output</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">any</span></dt>
+        <dd>Original payload of the input message.</dd>
+    </dl>
 </script>

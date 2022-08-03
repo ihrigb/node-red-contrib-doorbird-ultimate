@@ -10,6 +10,7 @@ module.exports = function(RED) {
         var scheme = n.scheme;
         var username = node.credentials.username;
         var password = node.credentials.password;
+        var port = node.credentials.port;
 
         node.doorbird = new doorbird.default({
             scheme: scheme,
@@ -17,11 +18,14 @@ module.exports = function(RED) {
             username: username,
             password: password
         });
-        node.doorbirdServer = node.doorbird.startUdpSocket(6524);
+        node.doorbirdServer = node.doorbird.startUdpSocket(port);
 
-        node.registerListener = (listener) => {
+        node.registerRingListener = (listener) => {
             node.doorbirdServer.registerRingListener(listener);
         };
+        node.registerMotionListener = (listener) => {
+            node.doorbirdServer.registerMotionListener(listener);
+        }
 
         node.on("close", function() {
             if (node.doorbirdServer !== undefined) {

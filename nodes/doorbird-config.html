@@ -4,7 +4,8 @@
         defaults: {
             name: {value: ''},
             host: {required: true},
-            scheme: {value: 'http', required: true}
+            scheme: {value: 'http', required: true},
+            port: {value: '6524', required: true}
         },
         credentials: {
             username: {type: "text"},
@@ -25,7 +26,8 @@
         <label for="node-config-input-scheme"><i class="fa fa-bookmark"></i> Scheme</label>
         <select id="node-config-input-scheme">
             <option value="http">http</option>
-            <option value="https">https</option>
+            <!-- HTTPS is not yet supported. -->
+            <!--option value="https">https</option-->
         </select>
     </div>
     <div class="form-row">
@@ -39,5 +41,12 @@
     <div class="form-row">
         <label for="node-config-input-password"><i class="fa fa-bookmark"></i> Password</label>
         <input type="password" id="node-config-input-password">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-port"><i class="fa fa-tag"></i> UDP Port</label>
+        <select id="node-config-input-port" style='width:70%'>
+            <option value="6524">6524</option>
+            <option value="35344">35344</option>
+        </select>
     </div>
 </script>

@@ -1,18 +1,21 @@
 <script type="text/javascript">
     RED.nodes.registerType('doorbird-open', {
         category: 'Doorbird',
-        color: '#dedede',
         defaults: {
             name: {value:""},
             station: {value:"", type:"doorbird-config"},
             relay: {value:"1", required: true}
         },
-        icon: 'doorbird.png',
         inputs: 1,
         outputs: 1,
+        color: '#dedede',
+        paletteLabel: 'Open',
         label: function() {
-            return this.name || "doorbird open";
-        }
+            return this.name || "Open";
+        },
+        inputLabels: 'Trigger',
+        outputLabels: 'Response',
+        icon: 'doorbird.png'
     });
 </script>
 
@@ -29,4 +32,17 @@
         <label for="node-input-relay"><i class="fa fa-tag"></i> Relay</label>
         <input type="text" id="node-input-relay" placeholder="Relay">
     </div>
+</script>
+
+<script type="text/html" data-help-name="doorbird-open">
+    <p>Node to open doors / trigger the Doorbird relays.</p>
+
+    <h3>Input</h3>
+    <p>Any input will trigger the relay. Input data will be ignored.</p>
+
+    <h3>Output</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>Response on successful relay trigger.</dd>
+    </dl>
 </script>

@@ -1,17 +1,17 @@
 module.exports = function(RED) {
     "use strict";
 
-    function DoorbirdRingNode(config) {
+    function DoorbirdMotionNode(config) {
         RED.nodes.createNode(this, config);
         var node = this;
 
         node.station = RED.nodes.getNode(config.station);
 
-        node.station.registerRingListener((ringEvent) => {
+        node.station.registerMotionListener((motionEvent) => {
             node.send({
-                payload: ringEvent
+                payload: motionEvent
             });
         });
     }
-    RED.nodes.registerType("doorbird-ring", DoorbirdRingNode);
+    RED.nodes.registerType("doorbird-motion", DoorbirdMotionNode);
 }
