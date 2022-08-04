@@ -35,7 +35,10 @@
                 }).done(info => {
                     var selectElement = $("#node-input-relay");
                     selectElement.empty();
-                    var relays = info.BHA.VERSION[0].RELAYS;
+                    var relays = info?.BHA?.VERSION[0]?.RELAYS;
+                    if (relays === undefined) {
+                        relays = [];
+                    }
                     relays.forEach(relay => {
                         $(`<option value="${relay}">${relay}</option>`).appendTo(selectElement);
                     });
