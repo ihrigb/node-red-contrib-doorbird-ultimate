@@ -1,32 +1,122 @@
 # node-red-contrib-doorbird-ultimate
 
+[![npm-version-image]][npm-url]
+[![MIT License][license-image]][license-url]
+
 Node-Red integration for Doorbird devices.
 
-## Description
+![Sample Flow](img/sample.png)
 
-This library is in development. Following nodes are planned and yet to be implemented:
+## Disclaimer
 
-* Input for ringing the doorbell
-* Input for motion sensor
+As this library potentially interacts with devices that are integrated in the security of the building, I want you to be aware of the fact, that you are using it at your own risk. I cannot be held responsible for any damage that occurs by the usage of this library.
 
 ## Nodes
 
-### Doorbird Config
+### Info
 
-Holds connection information to the Doorbird door station and is used by other nodes.
+Get basic information of the Doorbird device. Includes a manual trigger and can provide additional data, such as the available relays.
 
-### Doorbird Info
+__Input:__
 
-Get basic information of the Doorbird device.
+Any message will trigger the request. Payload will be ignored.
 
-### Doorbird Open Door
+__Output:__
+
+```json
+{
+    "BHA": {
+        "RETURNCODE": "1",
+        "VERSION": [
+            {
+                "FIRMWARE": "<your firmware",
+                "BUILD_NUMBER": "<your build number>",
+                "WIFI_MAC_ADDR": "<your wifi mac address>",
+                "RELAYS": [
+                    "<any active relay>"
+                ],
+                "DEVICE-TYPE": "<your device type>"
+            }
+        ]
+    }
+}
+```
+
+### Light
+
+Turns on the infrared lights for night vision.
+
+__Input:__
+
+Any message will trigger the lights. Payload will be ignored.
+
+__Output:__
+
+```json
+{
+    "BHA": {
+        "RETURNCODE": "1"
+    }
+}
+```
+
+### Motion
+
+Input node for motion detection events.
+
+__Output:__
+
+```json
+{
+    "intercomId": "<intercom that detected motion>",
+    "timestamp": "<timestamp of detection>"
+}
+```
+
+### Open
 
 Open a door by enabling any of Doorbird's relays.
 
-### Doorbird Live Image
+__Input:__
 
-View a live image in the node-red-dashboard. Updates on each input to the node.
+Any message will trigger the relay. Payload will be ignored.
 
-### Doorbird Live Video
+__Output:__
+
+```json
+{
+    "BHA": {
+        "RETURNCODE": "1"
+    }
+}
+```
+
+### Ring
+
+Input node for ring events.
+
+__Output:__
+
+```json
+{
+    "intercomId": "<intercom that detected motion>",
+    "event": "<for multiple ring buttons, this identifies it>",
+    "timestamp": "<timestamp of detection>"
+}
+```
+
+### Image
+
+View an image of the camera in the node-red-dashboard.
+
+__Input:__
+
+Any message will trigger an update of the image.
+
+__Output:__
+
+The original input message will be forwarded to the output of the node.
+
+### Video
 
 View live video of the camera in the node-red-dashboard.
