@@ -120,3 +120,8 @@ The original input message will be forwarded to the output of the node.
 ### Video
 
 View live video of the camera in the node-red-dashboard.
+
+[license-image]: https://img.shields.io/badge/license-MIT-blue.svg
+[license-url]: https://github.com/ihrigb/node-red-contrib-doorbird-ultimate/blob/master/LICENSE
+[npm-url]: https://www.npmjs.com/package/node-red-contrib-doorbird-ultimate
+[npm-version-image]: https://img.shields.io/npm/v/node-red-contrib-doorbird-ultimate.svg
