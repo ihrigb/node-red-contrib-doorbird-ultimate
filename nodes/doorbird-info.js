@@ -7,7 +7,7 @@ module.exports = function(RED) {
 
         node.station = RED.nodes.getNode(config.station);
 
-        node.on('input', function(msg) {
+        node.on('input', function(_msg) {
             var doorbird = node.station.doorbird;
             doorbird.getInfo((info) => {
                 node.send({
