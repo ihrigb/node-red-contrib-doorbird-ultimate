@@ -1,0 +1,23 @@
+{
+    "doorbird-config": {
+        "admin": {
+            "form": {
+                "labels": {
+                    "name": "Name",
+                    "scheme": "Scheme",
+                    "host": "Host",
+                    "username": "Username",
+                    "password": "Password",
+                    "udpPort": "UDP Port"
+                },
+                "placeholders": {
+                    "name": "Name",
+                    "host": "Host",
+                    "username": "Username",
+                    "password": "Password",
+                    "udpPort": "UDP Port"
+                }
+            }
+        }
+    }
+}

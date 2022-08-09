@@ -2,38 +2,44 @@
     RED.nodes.registerType('doorbird-open', {
         category: 'Doorbird',
         defaults: {
-            name: { value: "" },
-            station: { value: "", type: "doorbird-config" },
-            relay: { value: "1", required: true }
+            name: {value: ''},
+            station: {value: '', type: 'doorbird-config'},
+            relay: {value: '', required: true}
         },
         inputs: 1,
         outputs: 1,
         color: '#dedede',
-        paletteLabel: 'Open',
-        label: function () {
-            return this.name || "Open";
+        paletteLabel: function () {
+            return this._('doorbird-open.admin.paletteLabel');
         },
-        inputLabels: 'Trigger',
-        outputLabels: 'Response',
+        label: function () {
+            return this.name || this._('doorbird-open.admin.paletteLabel');
+        },
+        inputLabels: function() {
+            return this._('doorbird-open.admin.inputLabel');
+        },
+        outputLabels: function() {
+            return this._('doorbird-open.admin.outputLabel');
+        },
         icon: 'doorbird.png',
         oneditprepare: function () {
             var node = this;
-            var stationNode = RED.nodes.node($("#node-input-station").val());
+            var stationNode = RED.nodes.node($('#node-input-station').val());
 
             if (stationNode === undefined) {
-                $("#divDeployFirst").show();
-                $("#divMain").hide();
+                $('#divDeployFirst').show();
+                $('#divMain').hide();
             } else {
-                $("#divDeployFirst").hide();
-                $("#divMain").show();
+                $('#divDeployFirst').hide();
+                $('#divMain').show();
             }
 
             var updateRelays = () => {
                 $.ajax({
                     url: `DoorbirdUltimate/${stationNode.id}/info`,
-                    type: "GET"
+                    type: 'GET'
                 }).done(info => {
-                    var selectElement = $("#node-input-relay");
+                    var selectElement = $('#node-input-relay');
                     selectElement.empty();
                     var relays = info?.BHA?.VERSION[0]?.RELAYS;
                     if (relays === undefined) {
@@ -47,42 +53,29 @@
             updateRelays();
 
 
-            $("#node-input-station").change(updateRelays);
+            $('#node-input-station').change(updateRelays);
         }
     });
 </script>
 
 <script type="text/html" data-template-name="doorbird-open">
     <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="doorbird-open.admin.form.labels.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]doorbird-open.admin.form.placeholders.name">
     </div>
     <div class="form-row">
-        <label for="node-input-station"><i class="fa fa-tag"></i> Station</label>
-        <input type="text" id="node-input-station" placeholder="Station">
+        <label for="node-input-station"><i class="fa fa-tag"></i> <span data-i18n="doorbird-open.admin.form.labels.station"></span></label>
+        <input type="text" id="node-input-station">
     </div>
     <div id="divMain">
         <div class="form-row">
-            <label for="node-input-relay"><i class="fa fa-tag"></i> Relay</label>
+            <label for="node-input-relay"><i class="fa fa-tag"></i> <span data-i18n="doorbird-open.admin.form.labels.relay"></span></label>
             <select id="node-input-relay"></select>
         </div>
     </div>
     <div id="divDeployFirst">
         <div class="form-tips" style="margin-top:11px">
-            <span>Please create your first Doorbird Station, then Deploy, then reopen this window.</span>
+            <span data-i18n="doorbird-open.admin.form.deployFirst"></span>
         </div>
     </div>
-</script>
-
-<script type="text/html" data-help-name="doorbird-open">
-    <p>Node to open doors / trigger the Doorbird relays.</p>
-
-    <h3>Input</h3>
-    <p>Any input will trigger the relay. Input data will be ignored.</p>
-
-    <h3>Output</h3>
-    <dl class="message-properties">
-        <dt>payload <span class="property-type">object</span></dt>
-        <dd>Response on successful relay trigger.</dd>
-    </dl>
 </script>

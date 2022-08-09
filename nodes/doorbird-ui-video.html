@@ -14,24 +14,26 @@
                     var currentGroup = $('#node-input-group').val()|| this.group;
                     var groupNode = RED.nodes.node(currentGroup);
                     valid = !groupNode || +width <= +groupNode.width;
-                    $("#node-input-size").toggleClass("input-error",!valid);
+                    $('#node-input-size').toggleClass('input-error',!valid);
                     return valid;
                 }},
             height: {value: 0},
-            station: {value:"", type:"doorbird-config"}
+            station: {value: '', type: 'doorbird-config'}
         },
         icon: 'doorbird.png',
-        paletteLabel: 'Video',
+        paletteLabel: function() {
+            return this._('doorbird-ui-video.admin.paletteLabel');
+        },
         inputs: 0,
         outputs: 0,
         label: function() {
-            return this.name || "Video";
+            return this.name || this._('doorbird-ui-video.admin.paletteLabel');
         },
         oneditprepare: () => {
-            $( '#node-input-size' ).elementSizer( {
-                width: "#node-input-width",
-                height: "#node-input-height",
-                group: "#node-input-group"
+            $('#node-input-size').elementSizer( {
+                width: '#node-input-width',
+                height: '#node-input-height',
+                group: '#node-input-group'
             } );
         }
     });
@@ -39,26 +41,22 @@
 
 <script type="text/html" data-template-name="ui_doorbird-ui-video">
     <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-fw fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name" />
+        <label for="node-input-name"><i class="fa fa-fw fa-tag"></i> <span data-i18n="doorbird-ui-video.admin.form.labels.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]doorbird-ui-video.admin.form.placeholders.name" />
     </div>
     <br />
     <div class="form-row" id="template-row-group">
-        <label><i class="fa fa-fw fa-table"></i> Group</label>
+        <label><i class="fa fa-fw fa-table"></i> <span data-i18n="doorbird-ui-video.admin.form.labels.group"></span></label>
         <input type="text" id="node-input-group" />
     </div>
     <div class="form-row" id="template-row-size">
-        <label><i class="fa fa-fw fa-object-group"></i> Size</label>
+        <label><i class="fa fa-fw fa-object-group"></i> <span data-i18n="doorbird-ui-video.admin.form.labels.size"></span></label>
         <input type="hidden" id="node-input-width" />
         <input type="hidden" id="node-input-height" />
         <button id="node-input-size" class="editor-button"></button>
     </div>
     <div class="form-row">
-        <label for="node-input-station"><i class="fa fa-tag"></i> Station</label>
-        <input type="text" id="node-input-station" placeholder="Station">
+        <label for="node-input-station"><i class="fa fa-tag"></i> <span data-i18n="doorbird-ui-video.admin.form.labels.station"></span></label>
+        <input type="text" id="node-input-station">
     </div>
-</script>
-
-<script type="text/html" data-help-name="ui_doorbird-ui-video">
-    <p>UI node to show live video of the Doorbird camera in the dashboard.</p>
 </script>

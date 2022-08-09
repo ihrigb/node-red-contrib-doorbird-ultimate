@@ -14,11 +14,11 @@ module.exports = function(RED) {
                     payload: info
                 });
             }, (error) => {
-                node.error('Error in Doorbird communication.', error);
+                node.error(RED._('doorbird-info.runtime.error'), error);
             });
         });
 
-        RED.httpAdmin.post("/DoorbirdUltimate/:id/info", RED.auth.needsPermission("DoorbirdUltimate.info"), function(req, res) {
+        RED.httpAdmin.post('/DoorbirdUltimate/:id/info', RED.auth.needsPermission('DoorbirdUltimate.info'), function(req, res) {
             var node = RED.nodes.getNode(req.params.id);
             try {
                 node.receive();
@@ -28,5 +28,5 @@ module.exports = function(RED) {
             }
         });
     }
-    RED.nodes.registerType("doorbird-info", DoorbirdInfoNode);
+    RED.nodes.registerType('doorbird-info', DoorbirdInfoNode);
 };

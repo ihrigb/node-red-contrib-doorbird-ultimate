@@ -27,13 +27,13 @@ module.exports = function(RED) {
             node.doorbirdServer.registerMotionListener(listener);
         }
 
-        node.on("close", function() {
+        node.on('close', function() {
             if (node.doorbirdServer !== undefined) {
                 node.doorbirdServer.close();
             }
         });
 
-        RED.httpAdmin.get("/DoorbirdUltimate/:id/info", RED.auth.needsPermission("DoorbirdUltimate.info"), function(req, res) {
+        RED.httpAdmin.get('/DoorbirdUltimate/:id/info', RED.auth.needsPermission('DoorbirdUltimate.info'), function(req, res) {
             var node = RED.nodes.getNode(req.params.id);
             try {
                 node.doorbird.getInfo(info => {
@@ -46,8 +46,8 @@ module.exports = function(RED) {
     }
     RED.nodes.registerType('doorbird-config', DoorbirdConfigNode, {
         credentials: {
-            username: {type:"text"},
-            password: {type:"password"}
+            username: {type: 'text'},
+            password: {type: 'password'}
         }
     });
 }

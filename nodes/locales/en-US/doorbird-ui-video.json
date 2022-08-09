@@ -1,0 +1,18 @@
+{
+    "doorbird-ui-video": {
+        "admin": {
+            "paletteLabel": "Video",
+            "form": {
+                "labels": {
+                    "name": "Name",
+                    "group": "Group",
+                    "size": "Size",
+                    "station": "Station"
+                },
+                "placeholders": {
+                    "name": "Name"
+                }
+            }
+        }
+    }
+}

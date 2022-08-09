@@ -16,26 +16,32 @@
                     var currentGroup = $('#node-input-group').val()|| this.group;
                     var groupNode = RED.nodes.node(currentGroup);
                     valid = !groupNode || +width <= +groupNode.width;
-                    $("#node-input-size").toggleClass("input-error",!valid);
+                    $('#node-input-size').toggleClass('input-error',!valid);
                     return valid;
                 }},
             height: {value: 0},
-            station: {value:"", type:"doorbird-config"}
+            station: {value: '', type: 'doorbird-config'}
         },
         icon: 'doorbird.png',
-        paletteLabel: 'Image',
-        inputLabels: 'Update Trigger',
-        outputLabels: 'Forwarded Input Message',
+        paletteLabel: function() {
+            return this._('doorbird-ui-image.admin.paletteLabel');
+        },
+        inputLabels: function() {
+            return this._('doorbird-ui-image.admin.inputLabel');
+        },
+        outputLabels: function() {
+            return this._('doorbird-ui-image.admin.outputLabel');
+        },
         inputs: 1,
         outputs: 1,
         label: function() {
-            return this.name || "Image";
+            return this.name || this._('doorbird-ui-image.admin.paletteLabel');
         },
         oneditprepare: () => {
-            $( '#node-input-size' ).elementSizer( {
-                width: "#node-input-width",
-                height: "#node-input-height",
-                group: "#node-input-group"
+            $('#node-input-size').elementSizer( {
+                width: '#node-input-width',
+                height: '#node-input-height',
+                group: '#node-input-group'
             } );
         }
     });
@@ -43,35 +49,22 @@
 
 <script type="text/html" data-template-name="ui_doorbird-ui-image">
     <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-fw fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name" />
+        <label for="node-input-name"><i class="fa fa-fw fa-tag"></i> <span data-i18n="doorbird-ui-image.admin.form.labels.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]doorbird-ui-image.admin.form.placeholders.name" />
     </div>
     <br />
     <div class="form-row" id="template-row-group">
-        <label><i class="fa fa-fw fa-table"></i> Group</label>
+        <label><i class="fa fa-fw fa-table"></i> <span data-i18n="doorbird-ui-image.admin.form.labels.group"></span></label>
         <input type="text" id="node-input-group" />
     </div>
     <div class="form-row" id="template-row-size">
-        <label><i class="fa fa-fw fa-object-group"></i> Size</label>
+        <label><i class="fa fa-fw fa-object-group"></i> <span data-i18n="doorbird-ui-image.admin.form.labels.size"></span></label>
         <input type="hidden" id="node-input-width" />
         <input type="hidden" id="node-input-height" />
         <button id="node-input-size" class="editor-button"></button>
     </div>
     <div class="form-row">
-        <label for="node-input-station"><i class="fa fa-tag"></i> Station</label>
-        <input type="text" id="node-input-station" placeholder="Station">
+        <label for="node-input-station"><i class="fa fa-tag"></i> <span data-i18n="doorbird-ui-image.admin.form.labels.station"></span></label>
+        <input type="text" id="node-input-station">
     </div>
-</script>
-
-<script type="text/html" data-help-name="ui_doorbird-ui-image">
-    <p>UI node to show the latest image of the Doorbird camera in the dashboard.</p>
-
-    <h3>Input</h3>
-    <p>Any input will trigger an update of the image.</p>
-
-    <h3>Output</h3>
-    <dl class="message-properties">
-        <dt>payload <span class="property-type">any</span></dt>
-        <dd>Original payload of the input message.</dd>
-    </dl>
 </script>

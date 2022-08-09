@@ -13,5 +13,5 @@ module.exports = function(RED) {
             });
         });
     }
-    RED.nodes.registerType("doorbird-motion", DoorbirdMotionNode);
+    RED.nodes.registerType('doorbird-motion', DoorbirdMotionNode);
 }

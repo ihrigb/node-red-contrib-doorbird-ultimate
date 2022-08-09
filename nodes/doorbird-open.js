@@ -16,9 +16,9 @@ module.exports = function(RED) {
                     payload: response
                 });
             }, (err) => {
-                node.error('Problem in Doorbird communication.', err);
+                node.error(RED._('doorbird-open.runtime.error'), err);
             });
         });
     }
-    RED.nodes.registerType("doorbird-open", DoorbirdOpenNode);
+    RED.nodes.registerType('doorbird-open', DoorbirdOpenNode);
 }

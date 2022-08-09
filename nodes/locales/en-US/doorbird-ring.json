@@ -1,0 +1,17 @@
+{
+    "doorbird-ring": {
+        "admin": {
+            "paletteLabel": "Ring",
+            "outputLabel": "Ring Event",
+            "form": {
+                "labels": {
+                    "name": "Name",
+                    "station": "Station"
+                },
+                "placeholders": {
+                    "name": "Name"
+                }
+            }
+        }
+    }
+}

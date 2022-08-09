@@ -13,5 +13,5 @@ module.exports = function(RED) {
             });
         });
     }
-    RED.nodes.registerType("doorbird-ring", DoorbirdRingNode);
+    RED.nodes.registerType('doorbird-ring', DoorbirdRingNode);
 }

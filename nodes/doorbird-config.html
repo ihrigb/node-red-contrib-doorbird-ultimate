@@ -8,8 +8,8 @@
             port: {value: '6524', required: true}
         },
         credentials: {
-            username: {type: "text"},
-            password: {type: "password"}
+            username: {type: 'text'},
+            password: {type: 'password'}
         },
         label: function() {
             return this.name || this.host;
@@ -19,11 +19,11 @@
 
 <script type="text/html" data-template-name="doorbird-config">
     <div class="form-row">
-        <label for="node-config-input-name"><i class="fa fa-bookmark"></i> Name</label>
-        <input type="text" id="node-config-input-name">
+        <label for="node-config-input-name"><i class="fa fa-bookmark"></i> <span data-i18n="doorbird-config.admin.form.labels.name"></span></label>
+        <input type="text" id="node-config-input-name" data-i18n="[placeholder]doorbird-config.admin.form.placeholders.name">
     </div>
     <div class="form-row">
-        <label for="node-config-input-scheme"><i class="fa fa-bookmark"></i> Scheme</label>
+        <label for="node-config-input-scheme"><i class="fa fa-bookmark"></i> <span data-i18n="doorbird-config.admin.form.labels.scheme"></span></label>
         <select id="node-config-input-scheme">
             <option value="http">http</option>
             <!-- HTTPS is not yet supported. -->
@@ -31,19 +31,19 @@
         </select>
     </div>
     <div class="form-row">
-        <label for="node-config-input-host"><i class="fa fa-bookmark"></i> Host</label>
-        <input type="text" id="node-config-input-host">
+        <label for="node-config-input-host"><i class="fa fa-bookmark"></i> <span data-i18n="doorbird-config.admin.form.labels.host"></span></label>
+        <input type="text" id="node-config-input-host" data-i18n="[placeholder]doorbird-config.admin.form.placeholders.host">
     </div>
     <div class="form-row">
-        <label for="node-config-input-username"><i class="fa fa-bookmark"></i> Username</label>
-        <input type="text" id="node-config-input-username">
+        <label for="node-config-input-username"><i class="fa fa-bookmark"></i> <span data-i18n="doorbird-config.admin.form.labels.username"></span></label>
+        <input type="text" id="node-config-input-username" data-i18n="[placeholder]doorbird-config.admin.form.placeholders.username">
     </div>
     <div class="form-row">
-        <label for="node-config-input-password"><i class="fa fa-bookmark"></i> Password</label>
-        <input type="password" id="node-config-input-password">
+        <label for="node-config-input-password"><i class="fa fa-bookmark"></i> <span data-i18n="doorbird-config.admin.form.labels.password"></span></label>
+        <input type="password" id="node-config-input-password" data-i18n="[placeholder]doorbird-config.admin.form.placeholders.password">
     </div>
     <div class="form-row">
-        <label for="node-config-input-port"><i class="fa fa-tag"></i> UDP Port</label>
+        <label for="node-config-input-port"><i class="fa fa-tag"></i> <span data-i18n="doorbird-config.admin.form.labels.udpPort"></span></label>
         <select id="node-config-input-port" style='width:70%'>
             <option value="6524">6524</option>
             <option value="35344">35344</option>

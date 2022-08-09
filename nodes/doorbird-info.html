@@ -2,18 +2,24 @@
     RED.nodes.registerType('doorbird-info', {
         category: 'Doorbird',
         defaults: {
-            name: {value:""},
-            station: {value:"", type:"doorbird-config"}
+            name: {value: ''},
+            station: {value: '', type:'doorbird-config'}
         },
         inputs: 1,
         outputs: 1,
         color: '#dedede',
-        paletteLabel: 'Info',
-        label: function() {
-            return this.name || "Info";
+        paletteLabel: function() {
+            return this._('doorbird-info.admin.paletteLabel');
         },
-        inputLabels: 'Trigger',
-        outputLabels: 'Info',
+        label: function() {
+            return this.name || this._('doorbird-info.admin.paletteLabel');
+        },
+        inputLabels: function() {
+            return this._('doorbird-info.admin.inputLabel');
+        },
+        outputLabels: function () {
+            return this._('doorbird-info.admin.outputLabel');
+        },
         icon: 'doorbird.png',
         button: {
             onclick: function() {
@@ -28,24 +34,11 @@
 
 <script type="text/html" data-template-name="doorbird-info">
     <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="doorbird-info.admin.form.labels.name"></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]doorbird-info.admin.form.placeholders.name">
     </div>
     <div class="form-row">
-        <label for="node-input-station"><i class="fa fa-tag"></i> Station</label>
-        <input type="text" id="node-input-station" placeholder="Station">
+        <label for="node-input-station"><i class="fa fa-tag"></i> <span data-i18n="doorbird-info.admin.form.labels.station"></label>
+        <input type="text" id="node-input-station">
     </div>
-</script>
-
-<script type="text/html" data-help-name="doorbird-info">
-    <p>Node that provides the Doorbird info payload on any incoming trigger.</p>
-
-    <h3>Input</h3>
-    <p>Any input will trigger the info request to the Doorbird Station. Input data will be ignored.</p>
-
-    <h3>Output</h3>
-    <dl class="message-properties">
-        <dt>payload <span class="property-type">object</span></dt>
-        <dd>Info response of the Doorbird Station.</dd>
-    </dl>
 </script>

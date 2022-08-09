@@ -1,0 +1,17 @@
+{
+    "doorbird-motion": {
+        "admin": {
+            "paletteLabel": "Motion",
+            "outputLabel": "Motion Event",
+            "form": {
+                "labels": {
+                    "name": "Name",
+                    "station": "Station"
+                },
+                "placeholders": {
+                    "name": "Name"
+                }
+            }
+        }
+    }
+}

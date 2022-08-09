@@ -1,0 +1,20 @@
+{
+    "doorbird-ui-image": {
+        "admin": {
+            "paletteLabel": "Image",
+            "inputLabel": "Update Trigger",
+            "outputLabel": "Forwarded Input Message",
+            "form": {
+                "labels": {
+                    "name": "Name",
+                    "group": "Group",
+                    "size": "Size",
+                    "station": "Station"
+                },
+                "placeholders": {
+                    "name": "Name"
+                }
+            }
+        }
+    }
+}

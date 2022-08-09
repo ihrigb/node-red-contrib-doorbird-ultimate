@@ -1,0 +1,21 @@
+{
+    "doorbird-light": {
+        "admin": {
+            "paletteLabel": "Light",
+            "inputLabel": "Trigger",
+            "outputLabel": "Response",
+            "form": {
+                "labels": {
+                    "name": "Name",
+                    "station": "Station"
+                },
+                "placeholders": {
+                    "name": "Name"
+                }
+            }
+        },
+        "runtime": {
+            "error": "Error in Doorbird communication."
+        }
+    }
+}

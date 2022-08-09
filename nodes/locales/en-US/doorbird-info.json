@@ -1,0 +1,21 @@
+{
+    "doorbird-info": {
+        "admin": {
+            "paletteLabel": "Info",
+            "inputLabel": "Trigger",
+            "outputLabel": "Info",
+            "form": {
+                "labels": {
+                    "name": "Name",
+                    "station": "Station"
+                },
+                "placeholders": {
+                    "name": "Name"
+                }
+            }
+        },
+        "runtime": {
+            "error": "Error in Doorbird communication."
+        }
+    }
+}

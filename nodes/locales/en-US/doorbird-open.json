@@ -1,0 +1,23 @@
+{
+    "doorbird-open": {
+        "admin": {
+            "paletteLabel": "Open",
+            "inputLabel": "Trigger",
+            "outputLabel": "Response",
+            "form": {
+                "labels": {
+                    "name": "Name",
+                    "station": "Station",
+                    "relay": "Relay"
+                },
+                "placeholders": {
+                    "name": "Name"
+                },
+                "deployFirst": "Please create your first Doorbird Station, then Deploy, then reopen this window."
+            }
+        },
+        "runtime": {
+            "error": "Error in Doorbird communication."
+        }
+    }
+}

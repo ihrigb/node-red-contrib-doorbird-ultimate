@@ -8,36 +8,29 @@
         inputs: 1,
         outputs: 1,
         color: '#dedede',
-        paletteLabel: 'Light',
-        label: function() {
-            return this.name || "Light";
+        paletteLabel: function() {
+            return this._('doorbird-light.admin.paletteLabel')
         },
-        inputLabels: 'Trigger',
-        outputLabels: 'Response',
+        label: function() {
+            return this.name || this._('doorbird-light.admin.paletteLabel');
+        },
+        inputLabels: function() {
+            return this._('doorbird-light.admin.inputLabel')
+        },
+        outputLabels: function() {
+            return this._('doorbird-light.admin.outputLabel')
+        },
         icon: 'doorbird.png'
     });
 </script>
 
 <script type="text/html" data-template-name="doorbird-light">
     <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="doorbird-light.admin.form.labels.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]doorbird-light.admin.form.placeholders.name">
     </div>
     <div class="form-row">
-        <label for="node-input-station"><i class="fa fa-tag"></i> Station</label>
-        <input type="text" id="node-input-station" placeholder="Station">
+        <label for="node-input-station"><i class="fa fa-tag"></i> <span data-i18n="doorbird-light.admin.form.labels.station"></span></label>
+        <input type="text" id="node-input-station">
     </div>
-</script>
-
-<script type="text/html" data-help-name="doorbird-light">
-    <p>Node to turn on the video camera's infra red lights.</p>
-
-    <h3>Input</h3>
-    <p>Any input will trigger the lights. Input data will be ignored.</p>
-
-    <h3>Output</h3>
-    <dl class="message-properties">
-        <dt>payload <span class="property-type">object</span></dt>
-        <dd>Response on successful light trigger.</dd>
-    </dl>
 </script>

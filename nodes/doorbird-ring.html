@@ -2,38 +2,32 @@
     RED.nodes.registerType('doorbird-ring', {
         category: 'Doorbird',
         defaults: {
-            name: {value:""},
-            station: {value:"", type:"doorbird-config"}
+            name: {value: ''},
+            station: {value: '', type: 'doorbird-config'}
         },
         inputs: 0,
         outputs: 1,
         color: '#dedede',
-        paletteLabel: 'Ring',
-        label: function() {
-            return this.name || "Ring";
+        paletteLabel: function() {
+            return this._('doorbird-ring.admin.paletteLabel');
         },
-        outputLabels: 'Ring Event',
+        label: function() {
+            return this.name || this._('doorbird-ring.admin.paletteLabel');
+        },
+        outputLabels: function() {
+            return this._('doorbird-ring.admin.outputLabel');
+        },
         icon: 'doorbird.png',
     });
 </script>
 
 <script type="text/html" data-template-name="doorbird-ring">
     <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="doorbird-ring.admin.form.labels.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]doorbird-ring.admin.form.placeholders.name">
     </div>
     <div class="form-row">
-        <label for="node-input-station"><i class="fa fa-tag"></i> Station</label>
-        <input type="text" id="node-input-station" placeholder="Station">
+        <label for="node-input-station"><i class="fa fa-tag"></i> <span data-i18n="doorbird-ring.admin.form.labels.station"></span></label>
+        <input type="text" id="node-input-station">
     </div>
-</script>
-
-<script type="text/html" data-help-name="doorbird-ring">
-    <p>Input node for Doorbird ring events.</p>
-
-    <h3>Output</h3>
-    <dl class="message-properties">
-        <dt>payload <span class="property-type">object</span></dt>
-        <dd>Ring event payload.</dd>
-    </dl>
 </script>
