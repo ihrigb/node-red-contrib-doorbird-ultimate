@@ -18,12 +18,17 @@ module.exports = function(RED) {
             username: username,
             password: password
         });
-        node.doorbirdServer = node.doorbird.startUdpSocket(port);
 
         node.registerRingListener = (listener) => {
+            if (node.doorbirdServer === undefined) {
+                node.doorbirdServer = node.doorbird.startUdpSocket(port);
+            }
             node.doorbirdServer.registerRingListener(listener);
         };
         node.registerMotionListener = (listener) => {
+            if (node.doorbirdServer === undefined) {
+                node.doorbirdServer = node.doorbird.startUdpSocket(port);
+            }
             node.doorbirdServer.registerMotionListener(listener);
         }
 
