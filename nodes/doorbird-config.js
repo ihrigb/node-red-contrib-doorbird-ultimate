@@ -8,9 +8,9 @@ module.exports = function(RED) {
 
         var host = n.host;
         var scheme = n.scheme;
+        var port = n.port;
         var username = node.credentials.username;
         var password = node.credentials.password;
-        var port = node.credentials.port;
 
         node.doorbird = new doorbird.default({
             scheme: scheme,
