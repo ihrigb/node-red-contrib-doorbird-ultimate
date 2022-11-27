@@ -8,7 +8,8 @@
                     "host": "Host",
                     "username": "Username",
                     "password": "Password",
-                    "udpPort": "UDP Port"
+                    "udpPort": "UDP Port",
+                    "suppressBurst": "Suppress Burst"
                 },
                 "placeholders": {
                     "name": "Name",

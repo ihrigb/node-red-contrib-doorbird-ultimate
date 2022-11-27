@@ -22,9 +22,9 @@
     "test": "exit 0"
   },
   "node-red": {
-    "version": ">=2.0.0",
     "nodes": {
       "doorbird-config": "nodes/doorbird-config.js",
+      "doorbird-image": "nodes/doorbird-image.js",
       "doorbird-info": "nodes/doorbird-info.js",
       "doorbird-open": "nodes/doorbird-open.js",
       "doorbird-ui-image": "nodes/doorbird-ui-image.js",
@@ -35,7 +35,7 @@
     }
   },
   "dependencies": {
-    "doorbird": "^1.0.0"
+    "doorbird": "^2.0.1"
   },
   "engines": {
     "node": ">=12.0.0"

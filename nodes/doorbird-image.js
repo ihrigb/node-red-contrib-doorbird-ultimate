@@ -1,7 +1,7 @@
 module.exports = function (RED) {
     const statusUtils = require('./utils/status');
 
-    function DoorbirdInfoNode(config) {
+    function DoorbirdImageNode(config) {
         RED.nodes.createNode(this, config);
         var node = this;
 
@@ -12,28 +12,28 @@ module.exports = function (RED) {
             this.status({
                 fill: 'blue',
                 shape: 'dot',
-                text: `${statusUtils.statusDateString()}: ${RED._('doorbird-info.runtime.status.requesting')}`
+                text: `${statusUtils.statusDateString()}: ${RED._('doorbird-image.runtime.status.requesting')}`
             });
-            doorbird.getInfo().then(info => {
+            doorbird.getImage().then(image => {
                 this.status({
                     fill: 'green',
                     shape: 'dot',
-                    text: `${statusUtils.statusDateString()}: ${RED._('doorbird-info.runtime.status.success')}`
+                    text: `${statusUtils.statusDateString()}: ${RED._('doorbird-image.runtime.status.success')}`
                 });
                 node.send({
-                    payload: info
+                    payload: image
                 });
             }).catch(error => {
                 this.status({
                     fill: 'red',
                     shape: 'dot',
-                    text: `${statusUtils.statusDateString()}: ${RED._('doorbird-info.runtime.status.error')}`
+                    text: `${statusUtils.statusDateString()}: ${RED._('doorbird-image.runtime.status.error')}`
                 });
-                node.error(RED._('doorbird-info.runtime.error'), error);
+                node.error(RED._('doorbird-image.runtime.error'), error);
             });
         });
 
-        RED.httpAdmin.post('/DoorbirdUltimate/:id/info', RED.auth.needsPermission('DoorbirdUltimate.info'), function (req, res) {
+        RED.httpAdmin.post('/DoorbirdUltimate/:id/image', RED.auth.needsPermission('DoorbirdUltimate.image'), function (req, res) {
             var node = RED.nodes.getNode(req.params.id);
             try {
                 node.receive();
@@ -43,5 +43,5 @@ module.exports = function (RED) {
             }
         });
     }
-    RED.nodes.registerType('doorbird-info', DoorbirdInfoNode);
+    RED.nodes.registerType('doorbird-image', DoorbirdImageNode);
 };

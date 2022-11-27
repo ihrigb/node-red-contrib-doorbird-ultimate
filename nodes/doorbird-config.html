@@ -5,7 +5,8 @@
             name: {value: ''},
             host: {required: true},
             scheme: {value: 'http', required: true},
-            port: {value: '6524', required: true}
+            port: {value: '6524', required: true},
+            suppressBurst: {value: false, required: true}
         },
         credentials: {
             username: {type: 'text'},
@@ -48,5 +49,9 @@
             <option value="6524">6524</option>
             <option value="35344">35344</option>
         </select>
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-suppressBurst"><i class="fa fa-bookmark"></i> <span data-i18n="doorbird-config.admin.form.labels.suppressBurst"></span></label>
+        <input type="checkbox" id="node-config-input-suppressBurst">
     </div>
 </script>

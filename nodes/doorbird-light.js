@@ -15,7 +15,7 @@ module.exports = function (RED) {
                 shape: 'dot',
                 text: `${statusUtils.statusDateString()}: ${RED._('doorbird-light.runtime.status.requesting')}`
             });
-            doorbird.lightOn((response) => {
+            doorbird.lightOn().then(response => {
                 this.status({
                     fill: 'green',
                     shape: 'dot',
@@ -24,13 +24,13 @@ module.exports = function (RED) {
                 node.send({
                     payload: response
                 });
-            }, (err) => {
+            }).catch(error => {
                 this.status({
                     fill: 'red',
                     shape: 'dot',
                     text: `${statusUtils.statusDateString()}: ${RED._('doorbird-light.runtime.status.error')}`
                 });
-                node.error(RED._('doorbird-light.runtime.error'), err);
+                node.error(RED._('doorbird-light.runtime.error'), error);
             });
         });
     }

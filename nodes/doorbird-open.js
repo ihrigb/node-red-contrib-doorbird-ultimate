@@ -16,7 +16,7 @@ module.exports = function (RED) {
                 shape: 'dot',
                 text: `${statusUtils.statusDateString()}: ${RED._('doorbird-open.runtime.status.requesting')}`
             });
-            doorbird.openDoor(node.relay, (response) => {
+            doorbird.openDoor(node.relay).then(response => {
                 this.status({
                     fill: 'green',
                     shape: 'dot',
@@ -25,13 +25,13 @@ module.exports = function (RED) {
                 node.send({
                     payload: response
                 });
-            }, (err) => {
+            }).catch(error => {
                 this.status({
                     fill: 'red',
                     shape: 'dot',
                     text: `${statusUtils.statusDateString()}: ${RED._('doorbird-open.runtime.status.error')}`
                 });
-                node.error(RED._('doorbird-open.runtime.error'), err);
+                node.error(RED._('doorbird-open.runtime.error'), error);
             });
         });
     }

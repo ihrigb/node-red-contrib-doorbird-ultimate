@@ -9,6 +9,7 @@ module.exports = function(RED) {
         var host = n.host;
         var scheme = n.scheme;
         var port = n.port;
+        var suppressBurst = n.suppressBurst;
         var username = node.credentials.username;
         var password = node.credentials.password;
 
@@ -16,21 +17,47 @@ module.exports = function(RED) {
             scheme: scheme,
             host: host,
             username: username,
-            password: password
+            password: password,
+            suppressBurst: suppressBurst
         });
-        node.doorbirdServer = node.doorbird.startUdpSocket(port);
 
-        node.registerRingListener = (listener) => {
-            node.doorbirdServer.registerRingListener(listener);
+        var ringListeners = {};
+        var motionListeners = {};
+
+        var doorbirdServer = node.doorbird.startUdpSocket(port, suppressBurst);
+        doorbirdServer.registerRingListener(ringEvent => {
+            Object.values(ringListeners).forEach(listener => {
+                listener(ringEvent);
+            });
+        });
+        doorbirdServer.registerMotionListener(motionEvent => {
+            Object.values(motionListeners).forEach(listener => {
+                listener(motionEvent);
+            });
+        });
+
+        node.log(`Started Doorbird UDP socket on port ${port} with burst suppression ${suppressBurst ? 'enabled' : 'disabled'}.`);
+
+        node.registerRingListener = (name, listener) => {
+            ringListeners[name] = listener;
+            node.debug(`Registered ring listener ${name}`);
         };
-        node.registerMotionListener = (listener) => {
-            node.doorbirdServer.registerMotionListener(listener);
+        node.unregisterRingListener = name => {
+            ringListeners.delete(name);
+            node.debug(`Unregistered ring listener ${name}`);
+        }
+        node.registerMotionListener = (name, listener) => {
+            motionListeners[name] = listener;
+            node.debug(`Registered motion listener ${name}`);
+        }
+        node.unregisterMotionListener = name => {
+            motionListeners.delete(name);
+            node.debug(`Unegistered motion listener ${name}`);
         }
 
         node.on('close', function() {
-            if (node.doorbirdServer !== undefined) {
-                node.doorbirdServer.close();
-            }
+            doorbirdServer.close();
+            node.log('Stopped Doordbird UDP socket.');
         });
 
         RED.httpAdmin.get('/DoorbirdUltimate/:id/info', RED.auth.needsPermission('DoorbirdUltimate.info'), function(req, res) {

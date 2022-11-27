@@ -1,0 +1,26 @@
+{
+    "doorbird-image": {
+        "admin": {
+            "paletteLabel": "Image",
+            "inputLabel": "Trigger",
+            "outputLabel": "Image",
+            "form": {
+                "labels": {
+                    "name": "Name",
+                    "station": "Station"
+                },
+                "placeholders": {
+                    "name": "Name"
+                }
+            }
+        },
+        "runtime": {
+            "status": {
+                "requesting": "Requesting ...",
+                "success": "Success",
+                "error": "Error"
+            },
+            "error": "Error in Doorbird communication."
+        }
+    }
+}
