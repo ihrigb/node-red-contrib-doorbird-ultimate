@@ -13,6 +13,22 @@ As this library potentially interacts with devices that are integrated in the se
 
 ## Nodes
 
+### Image
+
+Get the current image of the camera as a byte buffer.
+
+__Input:__
+
+Any message will trigger the request. Payload will be ignored.
+
+__Output:__
+
+```json
+{
+    "payload": <byte buffer>
+}
+```
+
 ### Info
 
 Get basic information of the Doorbird device. Includes a manual trigger and can provide additional data, such as the available relays.
@@ -25,19 +41,21 @@ __Output:__
 
 ```json
 {
-    "BHA": {
-        "RETURNCODE": "1",
-        "VERSION": [
-            {
-                "FIRMWARE": "<your firmware",
-                "BUILD_NUMBER": "<your build number>",
-                "WIFI_MAC_ADDR": "<your wifi mac address>",
-                "RELAYS": [
-                    "<any active relay>"
-                ],
-                "DEVICE-TYPE": "<your device type>"
-            }
-        ]
+    "payload": {
+        "BHA": {
+            "RETURNCODE": "1",
+            "VERSION": [
+                {
+                    "FIRMWARE": "<your firmware",
+                    "BUILD_NUMBER": "<your build number>",
+                    "WIFI_MAC_ADDR": "<your wifi mac address>",
+                    "RELAYS": [
+                        "<any active relay>"
+                    ],
+                    "DEVICE-TYPE": "<your device type>"
+                }
+            ]
+        }
     }
 }
 ```
@@ -54,8 +72,10 @@ __Output:__
 
 ```json
 {
-    "BHA": {
-        "RETURNCODE": "1"
+    "payload": {
+        "BHA": {
+            "RETURNCODE": "1"
+        }
     }
 }
 ```
@@ -68,8 +88,10 @@ __Output:__
 
 ```json
 {
-    "intercomId": "<intercom that detected motion>",
-    "timestamp": "<timestamp of detection>"
+    "payload": {
+        "intercomId": "<intercom that detected motion>",
+        "timestamp": "<timestamp of detection>"
+    }
 }
 ```
 
@@ -85,8 +107,10 @@ __Output:__
 
 ```json
 {
-    "BHA": {
-        "RETURNCODE": "1"
+    "payload": {
+        "BHA": {
+            "RETURNCODE": "1"
+        }
     }
 }
 ```
@@ -99,13 +123,15 @@ __Output:__
 
 ```json
 {
-    "intercomId": "<intercom that detected motion>",
-    "event": "<for multiple ring buttons, this identifies it>",
-    "timestamp": "<timestamp of detection>"
+    "paylaod": {
+        "intercomId": "<intercom that detected motion>",
+        "event": "<for multiple ring buttons, this identifies it>",
+        "timestamp": "<timestamp of detection>"
+    }
 }
 ```
 
-### Image
+### UI: Image
 
 View an image of the camera in the node-red-dashboard.
 
@@ -117,7 +143,7 @@ __Output:__
 
 The original input message will be forwarded to the output of the node.
 
-### Video
+### UI: Video
 
 View live video of the camera in the node-red-dashboard.
 

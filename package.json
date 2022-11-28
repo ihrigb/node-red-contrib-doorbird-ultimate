@@ -1,7 +1,7 @@
 {
   "name": "node-red-contrib-doorbird-ultimate",
   "version": "1.2.0",
-  "description": "",
+  "description": "Node-Red Integration for Doorbird Devices",
   "repository": {
     "type": "git",
     "url": "https://github.com/ihrigb/node-red-contrib-doorbird-ultimate.git"
