@@ -63,7 +63,7 @@ module.exports = function(RED) {
         RED.httpAdmin.get('/DoorbirdUltimate/:id/info', RED.auth.needsPermission('DoorbirdUltimate.info'), function(req, res) {
             var node = RED.nodes.getNode(req.params.id);
             try {
-                node.doorbird.getInfo(info => {
+                node.doorbird.getInfo().then(info => {
                     res.json(info);
                 });
             } catch (err) {
