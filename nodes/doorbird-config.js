@@ -17,8 +17,7 @@ module.exports = function(RED) {
             scheme: scheme,
             host: host,
             username: username,
-            password: password,
-            suppressBurst: suppressBurst
+            password: password
         });
 
         var ringListeners = {};
