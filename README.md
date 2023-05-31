@@ -1,7 +1,7 @@
 # node-red-contrib-doorbird-ultimate
 
-[![npm-version-image]][npm-url]
-[![MIT License][license-image]][license-url]
+[![](https://img.shields.io/npm/v/node-red-contrib-doorbird-ultimate.svg)](https://www.npmjs.com/package/node-red-contrib-doorbird-ultimate)
+[![Apache 2.0 License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/ihrigb/node-doorbird/blob/master/LICENSE)
 
 Node-Red integration for Doorbird devices.
 
@@ -146,8 +146,3 @@ The original input message will be forwarded to the output of the node.
 ### UI: Video
 
 View live video of the camera in the node-red-dashboard.
-
-[license-image]: https://img.shields.io/badge/license-MIT-blue.svg
-[license-url]: https://github.com/ihrigb/node-red-contrib-doorbird-ultimate/blob/master/LICENSE
-[npm-url]: https://www.npmjs.com/package/node-red-contrib-doorbird-ultimate
-[npm-version-image]: https://img.shields.io/npm/v/node-red-contrib-doorbird-ultimate.svg
