@@ -35,7 +35,7 @@
     }
   },
   "dependencies": {
-    "doorbird": "^2.1.2"
+    "doorbird": "^2.2.0"
   },
   "engines": {
     "node": ">=12.0.0"
