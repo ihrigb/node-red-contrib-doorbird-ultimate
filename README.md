@@ -115,6 +115,22 @@ __Output:__
 }
 ```
 
+### Restart
+
+Restart the door station.
+
+__Input:__
+
+Any message will trigger the restart. Payload will be ignored.
+
+__Output:__
+
+```
+""
+```
+
+The response is usually an empty string.
+
 ### Ring
 
 Input node for ring events.

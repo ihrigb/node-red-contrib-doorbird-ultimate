@@ -1,0 +1,26 @@
+{
+    "doorbird-restart": {
+        "admin": {
+            "paletteLabel": "Restart",
+            "inputLabel": "Trigger",
+            "outputLabel": "Response",
+            "form": {
+                "labels": {
+                    "name": "Name",
+                    "station": "Station"
+                },
+                "placeholders": {
+                    "name": "Name"
+                }
+            }
+        },
+        "runtime": {
+            "status": {
+                "requesting": "Requesting ...",
+                "success": "Success",
+                "error": "Error"
+            },
+            "error": "Error in Doorbird communication."
+        }
+    }
+}

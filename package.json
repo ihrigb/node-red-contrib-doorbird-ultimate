@@ -31,7 +31,8 @@
       "doorbird-ui-video": "nodes/doorbird-ui-video.js",
       "doorbird-ring": "nodes/doorbird-ring.js",
       "doorbird-motion": "nodes/doorbird-motion.js",
-      "doorbird-light": "nodes/doorbird-light.js"
+      "doorbird-light": "nodes/doorbird-light.js",
+      "doorbird-restart": "nodes/doorbird-restart.js"
     }
   },
   "dependencies": {
