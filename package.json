@@ -22,6 +22,7 @@
     "test": "exit 0"
   },
   "node-red": {
+    "version": ">=3.0.0",
     "nodes": {
       "doorbird-config": "nodes/doorbird-config.js",
       "doorbird-image": "nodes/doorbird-image.js",
