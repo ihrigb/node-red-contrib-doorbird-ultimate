@@ -146,19 +146,3 @@ __Output:__
     }
 }
 ```
-
-### UI: Image
-
-View an image of the camera in the node-red-dashboard.
-
-__Input:__
-
-Any message will trigger an update of the image.
-
-__Output:__
-
-The original input message will be forwarded to the output of the node.
-
-### UI: Video
-
-View live video of the camera in the node-red-dashboard.
