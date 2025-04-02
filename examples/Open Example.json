@@ -1,0 +1,72 @@
+[
+  {
+    "id": "a758e1bcc2c3ec59",
+    "type": "tab",
+    "label": "Doorbird Open",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "243d87a3e4a72fbe",
+    "type": "debug",
+    "z": "a758e1bcc2c3ec59",
+    "name": "debug",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 510,
+    "y": 220,
+    "wires": []
+  },
+  {
+    "id": "879a73399f073a2f",
+    "type": "comment",
+    "z": "a758e1bcc2c3ec59",
+    "name": "This flow opens the door (trigger a relay) and logs the response.",
+    "info": "",
+    "x": 380,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "bf9c5d37059ec913",
+    "type": "inject",
+    "z": "a758e1bcc2c3ec59",
+    "name": "",
+    "props": [{ "p": "topic", "vt": "str" }],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "x": 270,
+    "y": 140,
+    "wires": [["a6d1a584e3598ea3"]]
+  },
+  {
+    "id": "a6d1a584e3598ea3",
+    "type": "doorbird-open",
+    "z": "a758e1bcc2c3ec59",
+    "name": "",
+    "station": "887f25e42fe1c817",
+    "relay": "1",
+    "x": 310,
+    "y": 220,
+    "wires": [["243d87a3e4a72fbe"]]
+  },
+  {
+    "id": "887f25e42fe1c817",
+    "type": "doorbird-config",
+    "name": "Doorbird",
+    "host": "0.0.0.0",
+    "scheme": "http",
+    "port": "6524",
+    "suppressBurst": true
+  }
+]

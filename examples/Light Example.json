@@ -1,0 +1,71 @@
+[
+  {
+    "id": "a758e1bcc2c3ec59",
+    "type": "tab",
+    "label": "Doorbird Light",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "243d87a3e4a72fbe",
+    "type": "debug",
+    "z": "a758e1bcc2c3ec59",
+    "name": "debug",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 510,
+    "y": 240,
+    "wires": []
+  },
+  {
+    "id": "879a73399f073a2f",
+    "type": "comment",
+    "z": "a758e1bcc2c3ec59",
+    "name": "This flow enables the infrared light and logs the response to a debug node.",
+    "info": "",
+    "x": 380,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "1bcdd9044bea1a74",
+    "type": "doorbird-light",
+    "z": "a758e1bcc2c3ec59",
+    "name": "",
+    "station": "887f25e42fe1c817",
+    "x": 390,
+    "y": 180,
+    "wires": [["243d87a3e4a72fbe"]]
+  },
+  {
+    "id": "5e288418f55ee034",
+    "type": "inject",
+    "z": "a758e1bcc2c3ec59",
+    "name": "",
+    "props": [{ "p": "topic", "vt": "str" }],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "x": 270,
+    "y": 120,
+    "wires": [["1bcdd9044bea1a74"]]
+  },
+  {
+    "id": "887f25e42fe1c817",
+    "type": "doorbird-config",
+    "name": "Doorbird",
+    "host": "0.0.0.0",
+    "scheme": "http",
+    "port": "6524",
+    "suppressBurst": true
+  }
+]

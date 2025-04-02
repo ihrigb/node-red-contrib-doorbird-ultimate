@@ -1,0 +1,56 @@
+[
+  {
+    "id": "a758e1bcc2c3ec59",
+    "type": "tab",
+    "label": "Doorbird Info",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "243d87a3e4a72fbe",
+    "type": "debug",
+    "z": "a758e1bcc2c3ec59",
+    "name": "debug",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 470,
+    "y": 140,
+    "wires": []
+  },
+  {
+    "id": "879a73399f073a2f",
+    "type": "comment",
+    "z": "a758e1bcc2c3ec59",
+    "name": "This flow logs station info to a debug node.",
+    "info": "",
+    "x": 380,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "0539e10519be645f",
+    "type": "doorbird-info",
+    "z": "a758e1bcc2c3ec59",
+    "name": "",
+    "station": "887f25e42fe1c817",
+    "x": 270,
+    "y": 140,
+    "wires": [["243d87a3e4a72fbe"]]
+  },
+  {
+    "id": "887f25e42fe1c817",
+    "type": "doorbird-config",
+    "name": "Doorbird",
+    "host": "0.0.0.0",
+    "scheme": "http",
+    "port": "6524",
+    "suppressBurst": true
+  }
+]
