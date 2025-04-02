@@ -1,7 +1,7 @@
 {
     "doorbird-ui-video": {
         "admin": {
-            "paletteLabel": "Video",
+            "paletteLabel": "Video (deprecated)",
             "form": {
                 "labels": {
                     "name": "Name",

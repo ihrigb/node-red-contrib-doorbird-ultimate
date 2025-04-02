@@ -1,7 +1,7 @@
 {
     "doorbird-ui-image": {
         "admin": {
-            "paletteLabel": "Image",
+            "paletteLabel": "Image (deprecated)",
             "inputLabel": "Update Trigger",
             "outputLabel": "Forwarded Input Message",
             "form": {
